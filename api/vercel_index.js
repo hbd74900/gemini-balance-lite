@@ -5,5 +5,5 @@ export const config = {
 };
 
 export default async function handler(req) {
-  return handleRequest(req);
+  return handleRequest(req, process.env);
 }

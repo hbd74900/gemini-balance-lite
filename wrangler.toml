@@ -3,3 +3,7 @@ name = "gemini-balance-lite"
 main = "src/index.js"
 compatibility_date = "2025-06-17"
 compatibility_flags = ["nodejs_compat"]
+
+# GitHub/Cloudflare 控制台部署建议手动绑定 KV，避免把 KV id 提交到仓库：
+# Settings -> Bindings -> KV namespace
+# Binding name: GEMINI_KEYS_KV
