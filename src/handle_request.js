@@ -233,23 +233,34 @@ const adminHtml = `<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gemini Key 管理</title>
 <style>
-:root{color-scheme:light;--bg:#f6f1e8;--ink:#201b16;--muted:#756a5f;--card:#fffaf1;--line:#dfd2c0;--green:#157347;--red:#b42318;--amber:#a15c00}body{margin:0;background:radial-gradient(circle at 10% 0,#ffe2b8,transparent 30%),linear-gradient(135deg,#f8ead4,#eef1e5 58%,#e5eef6);font-family:Georgia,'Times New Roman',serif;color:var(--ink)}main{max-width:1120px;margin:38px auto;padding:0 18px}.hero{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:22px}h1{font-size:42px;margin:0;letter-spacing:-.04em}.sub{color:var(--muted);margin-top:8px}.card{background:rgba(255,250,241,.88);border:1px solid var(--line);box-shadow:0 24px 70px rgba(75,53,28,.13);border-radius:26px;padding:20px;backdrop-filter:blur(12px);margin-bottom:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px}input,textarea{box-sizing:border-box;width:100%;border:1px solid var(--line);border-radius:14px;background:#fffdf8;color:var(--ink);padding:12px 13px;font:14px ui-monospace,SFMono-Regular,Consolas,monospace}textarea{min-height:112px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}button{border:0;border-radius:999px;background:var(--ink);color:#fff;padding:11px 16px;font-weight:700;cursor:pointer}button.secondary{background:#e6d7c1;color:var(--ink)}button.danger{background:var(--red)}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:18px 0 10px}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700}.available{background:#ddf3e6;color:var(--green)}.rate_limited{background:#fff0cf;color:var(--amber)}.invalid{background:#ffe0dc;color:var(--red)}.disabled{background:#e9e3da;color:var(--muted)}table{width:100%;border-collapse:separate;border-spacing:0 10px}th{text-align:left;color:var(--muted);font-size:12px;font-weight:500;padding:0 10px}td{background:rgba(255,253,248,.92);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 10px;vertical-align:middle;font-size:14px}td:first-child{border-left:1px solid var(--line);border-radius:16px 0 0 16px}td:last-child{border-right:1px solid var(--line);border-radius:0 16px 16px 0}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.small{font-size:12px;color:var(--muted)}.row-actions{display:flex;gap:8px;flex-wrap:wrap}.row-actions button{padding:8px 10px;font-size:12px}.notice{margin-top:12px;color:var(--muted);font-size:13px}@media(max-width:760px){.grid,.hero{display:block}h1{font-size:34px}table{display:block;overflow:auto}}
+:root{color-scheme:light;--ink:#201b16;--muted:#756a5f;--line:#dfd2c0;--green:#157347;--red:#b42318;--amber:#a15c00}body{margin:0;background:radial-gradient(circle at 10% 0,#ffe2b8,transparent 30%),linear-gradient(135deg,#f8ead4,#eef1e5 58%,#e5eef6);font-family:Georgia,'Times New Roman',serif;color:var(--ink)}main{max-width:1120px;margin:38px auto;padding:0 18px}.hero{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:22px}h1{font-size:42px;margin:0;letter-spacing:-.04em}.sub{color:var(--muted);margin-top:8px}.card{background:rgba(255,250,241,.88);border:1px solid var(--line);box-shadow:0 24px 70px rgba(75,53,28,.13);border-radius:26px;padding:20px;backdrop-filter:blur(12px);margin-bottom:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px}input,textarea{box-sizing:border-box;width:100%;border:1px solid var(--line);border-radius:14px;background:#fffdf8;color:var(--ink);padding:12px 13px;font:14px ui-monospace,SFMono-Regular,Consolas,monospace}textarea{min-height:112px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}button{border:0;border-radius:999px;background:var(--ink);color:#fff;padding:11px 16px;font-weight:700;cursor:pointer}button.secondary{background:#e6d7c1;color:var(--ink)}button.danger{background:var(--red)}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:18px 0 10px}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700}.available{background:#ddf3e6;color:var(--green)}.rate_limited{background:#fff0cf;color:var(--amber)}.invalid{background:#ffe0dc;color:var(--red)}.disabled{background:#e9e3da;color:var(--muted)}table{width:100%;border-collapse:separate;border-spacing:0 10px}th{text-align:left;color:var(--muted);font-size:12px;font-weight:500;padding:0 10px}td{background:rgba(255,253,248,.92);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 10px;vertical-align:middle;font-size:14px}td:first-child{border-left:1px solid var(--line);border-radius:16px 0 0 16px}td:last-child{border-right:1px solid var(--line);border-radius:0 16px 16px 0}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.small{font-size:12px;color:var(--muted)}.row-actions{display:flex;gap:8px;flex-wrap:wrap}.row-actions button{padding:8px 10px;font-size:12px}.notice{margin-top:12px;color:var(--muted);font-size:13px}.login{max-width:440px;margin:12vh auto}.hidden{display:none}@media(max-width:760px){.grid,.hero{display:block}h1{font-size:34px}table{display:block;overflow:auto}}
 </style>
 </head>
 <body>
-<main>
+<main id="loginView" class="login hidden">
+  <section class="card">
+    <h1>登录</h1>
+    <div class="sub">输入 Cloudflare 中配置的 ADMIN_TOKEN 后进入管理面板。</div>
+    <div style="height:18px"></div>
+    <label>管理员 Token</label>
+    <input id="loginToken" type="password" placeholder="ADMIN_TOKEN" autocomplete="current-password">
+    <div class="actions"><button id="loginBtn">进入管理面板</button></div>
+    <div class="notice" id="loginNotice">未登录时不会显示 Key 管理内容。</div>
+  </section>
+</main>
+<main id="appView" class="hidden">
   <section class="hero">
     <div><h1>Gemini Key 管理</h1><div class="sub">Cloudflare Worker 版真实 Key 池、代理 Key 签发、429 当日隔离与失效标记。</div></div>
-    <button id="refreshBtn">刷新状态</button>
+    <div class="actions"><button id="refreshBtn">刷新状态</button><button class="secondary" id="logoutBtn">退出登录</button></div>
   </section>
   <section class="card">
     <div class="grid">
-      <div><label>管理员 Token</label><input id="token" type="password" placeholder="ADMIN_TOKEN"></div>
       <div><label>真实 Key 名称（可选）</label><input id="name" placeholder="例如 account-a"></div>
+      <div><label>当前登录</label><input id="tokenState" disabled></div>
     </div>
     <label>真实 Gemini API Keys（支持多行、逗号、分号分隔）</label>
     <textarea id="keys" placeholder="AIza...&#10;AIza..."></textarea>
-    <div class="actions"><button id="addBtn">添加真实 Key</button><button class="secondary" id="saveTokenBtn">保存 Token 到浏览器</button></div>
+    <div class="actions"><button id="addBtn">添加真实 Key</button></div>
     <div class="notice" id="notice">需要 Cloudflare KV 绑定 GEMINI_KEYS_KV，且设置 ADMIN_TOKEN。</div>
   </section>
   <section class="card">
@@ -265,11 +276,15 @@ const adminHtml = `<!doctype html>
   <section class="card"><table><thead><tr><th>Key</th><th>状态</th><th>统计</th><th>最近信息</th><th>操作</th></tr></thead><tbody id="tbody"></tbody></table></section>
 </main>
 <script>
-const $=id=>document.getElementById(id);let token=localStorage.getItem('admin_token')||'';$('token').value=token;
-const api=async(path,opts={})=>{token=$('token').value.trim();const r=await fetch(path,{...opts,headers:{'Content-Type':'application/json','Authorization':'Bearer '+token,...(opts.headers||{})}});const data=await r.json().catch(()=>({error:'Invalid response'}));if(!r.ok)throw new Error(data.error||('HTTP '+r.status));return data};
+const $=id=>document.getElementById(id);let token=localStorage.getItem('admin_token')||'';
+const showLogin=msg=>{$('loginView').classList.remove('hidden');$('appView').classList.add('hidden');$('loginToken').value=token;if(msg)$('loginNotice').textContent=msg};
+const showApp=()=>{$('loginView').classList.add('hidden');$('appView').classList.remove('hidden');$('tokenState').value='已登录'};
+const api=async(path,opts={})=>{const r=await fetch(path,{...opts,headers:{'Content-Type':'application/json','Authorization':'Bearer '+token,...(opts.headers||{})}});const data=await r.json().catch(()=>({error:'Invalid response'}));if(!r.ok)throw new Error(data.error||('HTTP '+r.status));return data};
 const setNotice=t=>$('notice').textContent=t;
 const badge=s=>'<span class="pill '+s+'">'+s+'</span>';
-const load=async()=>{try{const data=await api('/admin/api/keys');const rows=data.keys||[];const proxies=data.proxyKeys||[];$('summary').textContent='共 '+rows.length+' 个，available '+rows.filter(x=>x.status==='available'&&!x.disabled).length+' 个';$('proxySummary').textContent='共 '+proxies.length+' 个，启用 '+proxies.filter(x=>!x.disabled).length+' 个';$('proxyTbody').innerHTML=proxies.map(k=>'<tr><td><div class="mono">'+k.maskedKey+'</div><div class="small">'+(k.name||k.id)+'</div></td><td>'+(k.disabled?badge('disabled'):badge('available'))+'</td><td>请求 '+k.requestCount+'</td><td><div class="small">'+(k.lastUsedAt||'-')+'</div></td><td><div class="row-actions"><button class="secondary" onclick="toggleProxy(\''+k.id+'\','+(!k.disabled)+')">'+(k.disabled?'启用':'禁用')+'</button><button class="danger" onclick="deleteProxy(\''+k.id+'\')">删除</button></div></td></tr>').join('')||'<tr><td colspan="5">暂无代理 Key</td></tr>';$('tbody').innerHTML=rows.map(k=>'<tr><td><div class="mono">'+k.maskedKey+'</div><div class="small">'+(k.name||k.id)+'</div></td><td>'+(k.disabled?badge('disabled'):badge(k.status))+'</td><td><div>请求 '+k.requestCount+' / 成功 '+k.successCount+' / 失败 '+k.failCount+'</div><div class="small">HTTP '+(k.lastStatus||'-')+'</div></td><td><div class="small">last: '+(k.lastUsedAt||'-')+'</div><div class="small">429: '+(k.last429At||'-')+'</div><div class="small">'+(k.lastError||'')+'</div></td><td><div class="row-actions"><button onclick="testKey(\''+k.id+'\')">检测</button><button class="secondary" onclick="toggleKey(\''+k.id+'\','+(!k.disabled)+')">'+(k.disabled?'启用':'禁用')+'</button><button class="secondary" onclick="resetKey(\''+k.id+'\')">重置</button><button class="danger" onclick="deleteKey(\''+k.id+'\')">删除</button></div></td></tr>').join('')||'<tr><td colspan="5">暂无真实 Gemini Key</td></tr>';setNotice('状态已刷新')}catch(e){setNotice(e.message)}};
+const load=async()=>{try{const data=await api('/admin/api/keys');showApp();const rows=data.keys||[];const proxies=data.proxyKeys||[];$('summary').textContent='共 '+rows.length+' 个，available '+rows.filter(x=>x.status==='available'&&!x.disabled).length+' 个';$('proxySummary').textContent='共 '+proxies.length+' 个，启用 '+proxies.filter(x=>!x.disabled).length+' 个';$('proxyTbody').innerHTML=proxies.map(k=>'<tr><td><div class="mono">'+k.maskedKey+'</div><div class="small">'+(k.name||k.id)+'</div></td><td>'+(k.disabled?badge('disabled'):badge('available'))+'</td><td>请求 '+k.requestCount+'</td><td><div class="small">'+(k.lastUsedAt||'-')+'</div></td><td><div class="row-actions"><button class="secondary" onclick="toggleProxy(\''+k.id+'\','+(!k.disabled)+')">'+(k.disabled?'启用':'禁用')+'</button><button class="danger" onclick="deleteProxy(\''+k.id+'\')">删除</button></div></td></tr>').join('')||'<tr><td colspan="5">暂无代理 Key</td></tr>';$('tbody').innerHTML=rows.map(k=>'<tr><td><div class="mono">'+k.maskedKey+'</div><div class="small">'+(k.name||k.id)+'</div></td><td>'+(k.disabled?badge('disabled'):badge(k.status))+'</td><td><div>请求 '+k.requestCount+' / 成功 '+k.successCount+' / 失败 '+k.failCount+'</div><div class="small">HTTP '+(k.lastStatus||'-')+'</div></td><td><div class="small">last: '+(k.lastUsedAt||'-')+'</div><div class="small">429: '+(k.last429At||'-')+'</div><div class="small">'+(k.lastError||'')+'</div></td><td><div class="row-actions"><button onclick="testKey(\''+k.id+'\')">检测</button><button class="secondary" onclick="toggleKey(\''+k.id+'\','+(!k.disabled)+')">'+(k.disabled?'启用':'禁用')+'</button><button class="secondary" onclick="resetKey(\''+k.id+'\')">重置</button><button class="danger" onclick="deleteKey(\''+k.id+'\')">删除</button></div></td></tr>').join('')||'<tr><td colspan="5">暂无真实 Gemini Key</td></tr>';setNotice('状态已刷新')}catch(e){localStorage.removeItem('admin_token');showLogin(e.message)}};
+const login=async()=>{token=$('loginToken').value.trim();localStorage.setItem('admin_token',token);await load()};
+const logout=()=>{token='';localStorage.removeItem('admin_token');showLogin('已退出登录')};
 const add=async()=>{try{await api('/admin/api/keys',{method:'POST',body:JSON.stringify({keys:$('keys').value,name:$('name').value})});$('keys').value='';await load()}catch(e){setNotice(e.message)}};
 const addProxy=async()=>{try{const data=await api('/admin/api/proxy-keys',{method:'POST',body:JSON.stringify({key:$('proxyKey').value,name:$('proxyName').value})});$('proxyKey').value='';$('proxyName').value='';setNotice('代理 Key 已签发：'+data.proxyKey.maskedKey);await load()}catch(e){setNotice(e.message)}};
 const testKey=async id=>{try{setNotice('检测中...');await api('/admin/api/keys/'+id+'/test',{method:'POST'});await load()}catch(e){setNotice(e.message)}};
@@ -278,11 +293,10 @@ const resetKey=async id=>{try{await api('/admin/api/keys/'+id+'/reset',{method:'
 const deleteKey=async id=>{if(!confirm('确定删除这个真实 Key？'))return;try{await api('/admin/api/keys/'+id,{method:'DELETE'});await load()}catch(e){setNotice(e.message)}};
 const toggleProxy=async(id,disabled)=>{try{await api('/admin/api/proxy-keys/'+id,{method:'PATCH',body:JSON.stringify({disabled})});await load()}catch(e){setNotice(e.message)}};
 const deleteProxy=async id=>{if(!confirm('确定删除这个代理 Key？'))return;try{await api('/admin/api/proxy-keys/'+id,{method:'DELETE'});await load()}catch(e){setNotice(e.message)}};
-$('addBtn').onclick=add;$('addProxyBtn').onclick=addProxy;$('refreshBtn').onclick=load;$('saveTokenBtn').onclick=()=>{localStorage.setItem('admin_token',$('token').value.trim());setNotice('已保存')};load();
+$('loginBtn').onclick=login;$('loginToken').onkeydown=e=>{if(e.key==='Enter')login()};$('addBtn').onclick=add;$('addProxyBtn').onclick=addProxy;$('refreshBtn').onclick=load;$('logoutBtn').onclick=logout;if(token){load()}else{showLogin()}
 </script>
 </body>
 </html>`;
-
 const generateProxyKey = () => {
   const bytes = new Uint8Array(24);
   crypto.getRandomValues(bytes);
@@ -465,3 +479,4 @@ export async function handleRequest(request, env = {}) {
    });
 }
 };
+
