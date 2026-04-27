@@ -1,4 +1,5 @@
 {
+  "name": "gemini-balance-lite",
   "devDependencies": {
     "wrangler": "^4.23.0"
   }
